@@ -12,19 +12,16 @@ int b = 0;                                // Variable for the Blue Value
 int r = 0;                                // Variable for the Red Value
 
 // Intial Variable declarations and assignments (Make changes to these if you want to change defaults)
-int frameDelay = 1 ;                      // default for the frame delay
 int menuItem = 1;                         // Variable for current main menu selection
-int initDelay = 0;                        // Variable for delay between button press and start of light sequence
-int repeat = 0;                           // Variable to select auto repeat (until select button is pressed again)
-int repeatDelay = 0;                      // Variable for delay between repeats
 int updateMode = 0;                       // Variable to keep track of update Modes
-int repeatTimes = 1;                      // Variable to keep track of number of repeats
 int brightness = 100;                     // Variable and default for the Brightness of the strip
-
-byte x;
+int initDelay = 0;                        // Variable for delay between button press and start of light sequence
+int frameDelay = 1 ;                      // Variable for delay between each image frame
+int repeatTimes = 1;                      // Variable to keep track of number of repeats
+int repeatDelay = 0;                      // Variable for delay between repeats
 
 // BacklightControl to save battery Life
-#define LCD_BRIGHTNESS 100                // LCD Brightness
+#define LCD_BRIGHTNESS 100                // Adjust this for brighter or darker LCD Brightness
 #define BackLightTimeout 500              // Adjust this to a larger number if you want a longer delay
 boolean BackLightTimer = false;             
 int BackLightTemp =  BackLightTimeout;

@@ -18,7 +18,7 @@
   2 - Brightness
   3 - Initial Delay
   4 - Frame Delay
-  5 - Repeat Times (The number of times to repeat the current file playback)
+  5 - Repeat Times (The number of times to repeat the current file playback, zero is for infinite)
   6 - Repeat Delay (if you want a delay between repeated files)
 
   This code supports direct reading of a 24bit Windows BMP from the SD card.
