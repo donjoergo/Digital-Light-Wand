@@ -10,5 +10,6 @@ Check out Michael Ross's <a href="http://mrossphoto.com/digital-light-wand/">pro
 * repeat infinite (nice for patterns, image only has to be 1px wide!)
 * LCD blacklight is switched off when drawing image
 * faster bootup-times due to smaller delays
+* Lightsaber Mode for Coolness :sunglasses:
 * code in separate files for more clarity
 * some smaller adjustments not worth to be mentioned

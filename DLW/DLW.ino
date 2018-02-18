@@ -20,6 +20,7 @@
   4 - Frame Delay
   5 - Repeat Times (The number of times to repeat the current file playback, zero is for infinite)
   6 - Repeat Delay (if you want a delay between repeated files)
+  7 - Light Saber
 
   This code supports direct reading of a 24bit Windows BMP from the SD card.
   BMP images must be rotated 90 degrees clockwise and the width of the image should match the

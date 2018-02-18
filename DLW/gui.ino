@@ -44,6 +44,12 @@ void updateMenu(){
         lcd.setCursor(0, 1);
         lcd.print(repeatDelay);
         break;
+      case 7:
+        lcd.begin(16, 2);
+        lcd.print("7:Light Saber  ");
+        lcd.setCursor(0, 1);
+        lcd.print(saberColors[saberColorIndicator]);
+        break;
     }
 }
 
@@ -71,6 +77,18 @@ void handleKeys(int keypress){
     digitalWrite(IndicatorLed, HIGH);
   }
   
+  else if (keypress == keys::SELECT && menuItem == 7) { 
+    analogWrite(BACKLIGHT, 0);                        // Turn off Backlight
+    digitalWrite(IndicatorLed, LOW);                  // Turn off Indicator LED
+    LightSaberOn();
+    do{
+      keypress = ReadKeypad(); 
+      delay(50);
+    }while(keypress == -1);
+    LightSaberOff();
+    ClearStrip(0);
+    BackLightOn();
+    digitalWrite(IndicatorLed, HIGH);
   }
 
   else if (keypress == keys::RIGHT) {           // The Right Key was Pressed
@@ -96,6 +114,10 @@ void handleKeys(int keypress){
         break;
       case 6:                             // Adjust Repeat Delay + 100 milliseconds
         repeatDelay += 100;
+        break;
+      case 7:                             // Select saber color
+        if (saberColorIndicator < sizeof(saberColors)/sizeof(String)-1) saberColorIndicator++;
+        else saberColorIndicator = 0;
         break;
     }
   }
@@ -123,16 +145,20 @@ void handleKeys(int keypress){
       case 6:                                   // Adjust Repeat Delay - 100 milliseconds
         if (repeatDelay > 0) repeatDelay -= 100;
         break;
+      case 7:                                   // Select saber color
+        if (saberColorIndicator > 0) saberColorIndicator--;
+        else saberColorIndicator = sizeof(saberColors)/sizeof(String)-1;
+        break;
     }
   }
 
   else if (( keypress == keys::UP)) {                 // The up key was pressed
-    if (menuItem == 1) menuItem = 6;
+    if (menuItem == 1) menuItem = 7;
     else menuItem--;
   }
   
   else if (( keypress == keys::DOWN)) {                 // The down key was pressed
-    if (menuItem == 6) menuItem = 1;
+    if (menuItem == 7) menuItem = 1;
     else  menuItem += 1;
   }
 }

@@ -22,6 +22,8 @@ int initDelay = 0;                        // Variable for delay between button p
 int frameDelay = 1 ;                      // Variable for delay between each image frame
 int repeatTimes = 1;                      // Variable to keep track of number of repeats
 int repeatDelay = 0;                      // Variable for delay between repeats
+String saberColors[] = {"red", "green", "blue"};
+int saberColorIndicator = 0;
 
 // BacklightControl to save battery Life
 #define LCD_BRIGHTNESS 100                // Adjust this for brighter or darker LCD Brightness
