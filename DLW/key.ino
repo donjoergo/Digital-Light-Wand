@@ -1,24 +1,26 @@
 int ReadKeypad() {
   adc_key_in = analogRead(0);             // read the value from the sensor
-  digitalWrite(13, HIGH);
-  key = get_key(adc_key_in);              // convert into key press
-
+  aux_btn_in = digitalRead(AuxButton);
+  key = get_key(adc_key_in, aux_btn_in);  // convert into key press
+  Serial.println(key);
   if (key != oldkey) {                    // if keypress is detected
     delay(50);                            // wait for debounce time
     adc_key_in = analogRead(0);           // read the value from the sensor
-    key = get_key(adc_key_in);            // convert into key press
+    aux_btn_in = digitalRead(AuxButton);
+    key = get_key(adc_key_in, aux_btn_in);// convert into key press
     if (key != oldkey) {
       oldkey = key;
-      if (key >= 0) {
-        return key;
-      }
+      return key;
     }
   }
-  return key;
+  else if (key != keys::SELECT) return key; // allow fast scrolling exept for select
+  else return -1;
 }
 
 // Convert ADC value to key number
-int get_key(unsigned int input) {
+int get_key(int input, bool aux_btn_in) {
+  
+  if (!aux_btn_in) return keys::SELECT;  // Return if auxbtn is pressed
   int k;
   for (k = 0; k < NUM_KEYS; k++) {
     if (input < adc_key_val[k]) {
