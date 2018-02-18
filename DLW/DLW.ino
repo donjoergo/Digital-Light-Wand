@@ -48,11 +48,14 @@ void setup() {
   digitalWrite(AuxButton, HIGH);
   pinMode(AuxButtonGND, OUTPUT);
   digitalWrite(AuxButtonGND, LOW);
-
+  pinMode(IndicatorLed, OUTPUT);
+  pinMode(IndicatorLedGND, OUTPUT);
   setupLEDs();
   setupLCDdisplay();
   setupSDcard();
   BackLightOn();
+  digitalWrite(IndicatorLed, HIGH);
+  digitalWrite(IndicatorLedGND, LOW);
 }
 
 

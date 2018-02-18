@@ -48,8 +48,9 @@ void updateMenu(){
 }
 
 void handleKeys(int keypress){
-  if ((keypress == keys::SELECT) || (digitalRead(AuxButton) == LOW)) {   // The select key was pressed
-    analogWrite(BACKLIGHT, 0);                // Turn off Backlight
+  if (keypress == keys::SELECT && menuItem != 7) {    // The select key was pressed
+    analogWrite(BACKLIGHT, 0);                        // Turn off Backlight
+    digitalWrite(IndicatorLed, LOW);                  // Turn off Indicator LED
     delay(initDelay);
     if (repeatTimes > 1) {
       for (int x = repeatTimes; x > 0; x--) {
@@ -67,6 +68,9 @@ void handleKeys(int keypress){
     else SendFile(m_CurrentFilename);
     ClearStrip(0);
     BackLightOn();
+    digitalWrite(IndicatorLed, HIGH);
+  }
+  
   }
 
   else if (keypress == keys::RIGHT) {           // The Right Key was Pressed

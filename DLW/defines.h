@@ -1,15 +1,18 @@
 // Pin assignments for the Arduino (Make changes to these if you use different Pins)
 #define BACKLIGHT 10                      // Pin used for the LCD Backlight
 #define SDSSPIN 53                        // SD card CS pin
-#define NPPIN 49                          // Data Pin for the NeoPixel LED Strip
-#define AuxButton 44                      // Aux Select Button Pin
-#define AuxButtonGND 45                   // Aux Select Button Ground Pin
+#define NPPIN 31                          // Data Pin for the NeoPixel LED Strip
+#define IndicatorLed 25                   // Indicator LED Pin
+#define IndicatorLedGND 24                // Indicator LED Ground Pin
+#define AuxButton 26                      // Aux Select Button Pin
+#define AuxButtonGND 27                   // Aux Select Button Ground Pin
+
 
 //LED-strip variables
 #define STRIP_LENGTH 288                  // Set the number of LEDs the LED Strip
+int r = 0;                                // Variable for the Red Value
 int g = 0;                                // Variable for the Green Value
 int b = 0;                                // Variable for the Blue Value
-int r = 0;                                // Variable for the Red Value
 
 // Intial Variable declarations and assignments (Make changes to these if you want to change defaults)
 int menuItem = 1;                         // Variable for current main menu selection
@@ -30,6 +33,7 @@ int BackLightTemp =  BackLightTimeout;
 int adc_key_val[5] = { 30, 170, 390, 600, 800 };
 int NUM_KEYS = 5;
 int adc_key_in;
+bool aux_btn_in;
 int key = -1;
 int oldkey = -1;
 bool menu_updated = true;                 // Variable to determine if menu needs to be updated
